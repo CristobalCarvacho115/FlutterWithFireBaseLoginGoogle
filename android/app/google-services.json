@@ -1,0 +1,113 @@
+{
+  "project_info": {
+    "project_number": "812235268637",
+    "project_id": "recetas-salinas-carvacho",
+    "storage_bucket": "recetas-salinas-carvacho.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812235268637:android:e205229cf3d7bf822b5cf4",
+        "android_client_info": {
+          "package_name": "com.carvachosalinas.gourmet_tagua_tagua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812235268637-9o6jmfth3nia3ed1js8shv170k1ivf1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carvachosalinas.gourmet_tagua_tagua",
+            "certificate_hash": "327c884900741628d89c889ee8c65c83cb7758fd"
+          }
+        },
+        {
+          "client_id": "812235268637-1orr43j9ip3j1dc6pr8mld86k8tui529.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ2qZIP7ABlT0NvGVHLW5wfETMELnKQNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812235268637-1orr43j9ip3j1dc6pr8mld86k8tui529.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812235268637:android:6f515dae1d02eea32b5cf4",
+        "android_client_info": {
+          "package_name": "com.proyecto_recetas.gourmet_tagua_tagua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812235268637-1orr43j9ip3j1dc6pr8mld86k8tui529.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ2qZIP7ABlT0NvGVHLW5wfETMELnKQNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812235268637-1orr43j9ip3j1dc6pr8mld86k8tui529.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812235268637:android:7fb8194e31c5c3bf2b5cf4",
+        "android_client_info": {
+          "package_name": "com.salinascarvacho.gourmet_tagua_tagua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812235268637-h22utrpt35v7saepnfpkdqsqad873gjo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.salinascarvacho.gourmet_tagua_tagua",
+            "certificate_hash": "327c884900741628d89c889ee8c65c83cb7758fd"
+          }
+        },
+        {
+          "client_id": "812235268637-1orr43j9ip3j1dc6pr8mld86k8tui529.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ2qZIP7ABlT0NvGVHLW5wfETMELnKQNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812235268637-1orr43j9ip3j1dc6pr8mld86k8tui529.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
