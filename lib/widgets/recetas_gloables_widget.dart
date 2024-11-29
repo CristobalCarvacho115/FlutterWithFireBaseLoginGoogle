@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
 class recetas_globales_widget extends StatelessWidget {
   const recetas_globales_widget({
@@ -15,18 +14,8 @@ class recetas_globales_widget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5),
       color: Colors.white,
-      child: Slidable(
-        endActionPane: ActionPane(
-          motion: ScrollMotion(),
-          children: [
-            SlidableAction(
-              onPressed: (context) {},
-              icon: Icons.delete,
-              label: 'Eliminar',
-              backgroundColor: Colors.red,
-            )
-          ],
-        ),
+      child: Container(
+        width: double.infinity,
         child: Row(
           children: [
             Container(
@@ -43,23 +32,18 @@ class recetas_globales_widget extends StatelessWidget {
                 fit: BoxFit.fitHeight,
               ),
             ),
-            Expanded(
+            Container(
               child: Column(
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(receta['nombre'], style: TextStyle(fontSize: 18)),
-                      Text('Categoría: ${receta['categoria']}', style: TextStyle(fontSize: 14)),
-                      Text('Autor: ${receta['autor']}', style: TextStyle(fontSize: 14)),
+                      Text(receta['nombre'], style: TextStyle(fontSize: 17)),
+                      Text('Categoría: ${receta['categoria']}', style: TextStyle(fontSize: 15)),
+                      Text('Autor: ${receta['autor']}', style: TextStyle(fontSize: 15)),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [ElevatedButton(onPressed: () {}, child: Text('Ver'))],
-                  )
                 ],
               ),
             ),
@@ -67,9 +51,5 @@ class recetas_globales_widget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String _mostrarIngredientes(String ingredientes) {
-    return '- ' + ingredientes.trim().replaceAll(RegExp(r','), '\n-');
   }
 }

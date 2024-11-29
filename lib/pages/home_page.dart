@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gourmet_tagua_tagua/navs/recetas_agregar.dart';
 import 'package:gourmet_tagua_tagua/navs/recetas_globales.dart';
 import 'package:gourmet_tagua_tagua/navs/recetas_propias.dart';
+import 'package:gourmet_tagua_tagua/pages/login_page.dart';
+import 'package:gourmet_tagua_tagua/services/auth_google_service.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,9 +23,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple.shade300,
+        backgroundColor: Color(0xFF6A1B9A),
         foregroundColor: Colors.white,
         title: Text("Gourmet Tagua Tagua"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              _confirmarCierreSesion(context).then((confirmarCierre) {
+                if (confirmarCierre) {
+                  FirebaseAuth.instance.signOut();
+                  AuthGoogleService().signOut();
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (Route<dynamic> route) => false);
+                }
+              });
+            },
+          ),
+        ],
         leading: Icon(MdiIcons.bird),
       ),
       body: pages[pageSelected],
@@ -55,6 +72,32 @@ class _HomePageState extends State<HomePage> {
           });
         },
       ),
+    );
+  }
+
+  Future<dynamic> _confirmarCierreSesion(BuildContext context) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('¿Desea cerrar sesión?'),
+          content: Text(
+            'Si lo hace tendrá que iniciar sesión nuevamente para entrar al sitio.',
+            style: TextStyle(fontSize: 16),
+          ),
+          actions: [
+            TextButton(
+              child: Text('Cancelar'),
+              onPressed: () => Navigator.pop(context, false),
+            ),
+            FilledButton(
+              child: Text('Aceptar'),
+              onPressed: () => Navigator.pop(context, true),
+            ),
+          ],
+        );
+      },
     );
   }
 }
