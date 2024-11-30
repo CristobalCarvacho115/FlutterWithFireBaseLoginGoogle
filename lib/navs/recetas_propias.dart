@@ -31,10 +31,10 @@ class _RecetasPropiasState extends State<RecetasPropias> {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 var receta = snapshot.data!.docs[index];
-                if (receta['autor'] != FirebaseAuth.instance.currentUser!.displayName!) {
+                if (receta['autor'] == FirebaseAuth.instance.currentUser!.displayName!) {
                   return Slidable(
                     //EDITAR
-                    startActionPane: ActionPane(
+                    endActionPane: ActionPane(
                       motion: ScrollMotion(),
                       children: [
                         SlidableAction(
@@ -55,7 +55,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
                       ],
                     ),
                     //BORRAR
-                    endActionPane: ActionPane(
+                    startActionPane: ActionPane(
                       motion: ScrollMotion(),
                       children: [
                         SlidableAction(
@@ -63,7 +63,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
                             _confirmBorrado(context).then((confirmaBorrado) {
                               if (confirmaBorrado) {
                                 setState(() {
-                                  RecetasService().eliminarReceta(receta['id']);
+                                  RecetasService().eliminarReceta(receta.id);
                                 });
                               }
                             });

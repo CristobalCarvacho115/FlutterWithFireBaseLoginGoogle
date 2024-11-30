@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF6A1B9A),
+        backgroundColor: Colors.purple.shade300,
         foregroundColor: Colors.white,
         title: Text("Gourmet Tagua Tagua"),
         actions: [
@@ -59,10 +59,12 @@ class _HomePageState extends State<HomePage> {
         destinations: [
           NavigationDestination(
             icon: Icon(MdiIcons.apple),
+            selectedIcon: Icon(MdiIcons.foodApple, color: Colors.white),
             label: "Mis recetas",
           ),
           NavigationDestination(
             icon: Icon(MdiIcons.earth),
+            selectedIcon: Icon(MdiIcons.earth, color: Colors.white),
             label: "Más recetas",
           ),
         ],

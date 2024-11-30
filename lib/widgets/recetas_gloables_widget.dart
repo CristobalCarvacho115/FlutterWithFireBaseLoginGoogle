@@ -12,10 +12,8 @@ class recetas_globales_widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
       color: Colors.white,
-      child: Container(
-        width: double.infinity,
+      child: Expanded(
         child: Row(
           children: [
             Container(
@@ -33,17 +31,17 @@ class recetas_globales_widget extends StatelessWidget {
               ),
             ),
             Container(
+              constraints: BoxConstraints(
+                maxWidth: 260,
+                // maxHeight: 120,
+              ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(receta['nombre'], style: TextStyle(fontSize: 17)),
-                      Text('Categoría: ${receta['categoria']}', style: TextStyle(fontSize: 15)),
-                      Text('Autor: ${receta['autor']}', style: TextStyle(fontSize: 15)),
-                    ],
-                  ),
+                  Text(receta['nombre'], style: TextStyle(fontSize: 17)),
+                  Text('Categoría: ${receta['categoria']}', style: TextStyle(fontSize: 15)),
+                  Text('Autor: ${receta['autor']}', style: TextStyle(fontSize: 15)),
                 ],
               ),
             ),
