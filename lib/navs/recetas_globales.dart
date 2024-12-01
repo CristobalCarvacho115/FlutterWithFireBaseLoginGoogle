@@ -34,7 +34,6 @@ class _RecetasGlobalesState extends State<RecetasGlobales> {
                 var receta = snapshot.data!.docs[index];
                 if (receta['autor'] == FirebaseAuth.instance.currentUser!.displayName!) {
                   return Slidable(
-                    //EDITAR
                     endActionPane: ActionPane(
                       motion: ScrollMotion(),
                       children: [
@@ -55,7 +54,6 @@ class _RecetasGlobalesState extends State<RecetasGlobales> {
                         ),
                       ],
                     ),
-                    //BORRAR
                     startActionPane: ActionPane(
                       motion: ScrollMotion(),
                       children: [
@@ -80,7 +78,6 @@ class _RecetasGlobalesState extends State<RecetasGlobales> {
                 }
                 if (receta['autor'] != FirebaseAuth.instance.currentUser!.displayName!) {
                   return Slidable(
-                    //EDITAR
                     endActionPane: ActionPane(
                       motion: ScrollMotion(),
                       children: [

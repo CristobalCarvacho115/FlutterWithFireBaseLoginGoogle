@@ -24,7 +24,6 @@ class _RecetasPropiasState extends State<RecetasPropias> {
         color: Colors.red.shade100,
         child: StreamBuilder(
           stream: RecetasService().mostrarRecetasPropias(autor),
-          // initialData: initialData,
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData || snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -34,7 +33,6 @@ class _RecetasPropiasState extends State<RecetasPropias> {
               itemBuilder: (context, index) {
                 var receta = snapshot.data!.docs[index];
                 return Slidable(
-                  //EDITAR
                   endActionPane: ActionPane(
                     motion: ScrollMotion(),
                     children: [
@@ -55,7 +53,6 @@ class _RecetasPropiasState extends State<RecetasPropias> {
                       ),
                     ],
                   ),
-                  //BORRAR
                   startActionPane: ActionPane(
                     motion: ScrollMotion(),
                     children: [
