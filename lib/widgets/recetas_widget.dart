@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class recetas_globales_widget extends StatelessWidget {
-  const recetas_globales_widget({
+class recetas_widget extends StatelessWidget {
+  const recetas_widget({
     super.key,
     required this.receta,
   });
@@ -13,7 +13,7 @@ class recetas_globales_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Expanded(
+      child: Container(
         child: Row(
           children: [
             Container(
@@ -32,7 +32,7 @@ class recetas_globales_widget extends StatelessWidget {
             ),
             Container(
               constraints: BoxConstraints(
-                maxWidth: 260,
+                maxWidth: 240,
                 // maxHeight: 120,
               ),
               child: Column(

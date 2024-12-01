@@ -18,7 +18,7 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
   TextEditingController ingredientesCtrl = TextEditingController();
   TextEditingController preparacionCtrl = TextEditingController();
   String categoriaSeleccionada = 'Guisos';
-  String imagenSeleccionada = 'guiso.jpg';
+  String imagen = 'guiso.jpg';
   final String autor = FirebaseAuth.instance.currentUser!.displayName!;
 
   @override
@@ -54,6 +54,8 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                     validator: (nombre) {
                       if (nombre!.isEmpty) {
                         return 'El nombre es requerido';
+                      } else if (nombre.length > 50) {
+                        return 'El nombre debe tener menos de 40 caracteres';
                       }
                       return null;
                     },
@@ -69,8 +71,8 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: TextFormField(
-                    validator: (nombre) {
-                      if (nombre!.isEmpty) {
+                    validator: (ingrediente) {
+                      if (ingrediente!.isEmpty) {
                         return 'Por favor ingrese los ingredientes';
                       }
                       return null;
@@ -136,6 +138,8 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                               onChanged: (value) {
                                 setState(() {
                                   categoriaSeleccionada = value!;
+                                  imagen = _imagenSeleccionada(categoriaSeleccionada);
+                                  ;
                                 });
                               },
                             ),
@@ -159,7 +163,7 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                           ingredientesCtrl.text,
                           preparacionCtrl.text,
                           categoriaSeleccionada,
-                          imagenSeleccionada,
+                          imagen,
                         );
                         Navigator.pop(context);
                       }
@@ -176,5 +180,24 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
         ),
       ),
     );
+  }
+
+  String _imagenSeleccionada(String categoria) {
+    switch (categoria) {
+      case 'Guisos':
+        return 'guiso.jpg';
+      case 'Fritura':
+        return 'fritura.jpg';
+      case 'Navideño':
+        return 'navideno.jpg';
+      case 'Vegetariano':
+        return 'vegetariano.jpg';
+      case 'Postres':
+        return 'postre.jpg';
+      case 'Pastas':
+        return 'pasta.jpg';
+      default:
+        return 'guiso.jpg';
+    }
   }
 }

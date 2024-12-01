@@ -6,6 +6,10 @@ class RecetasService {
     return FirebaseFirestore.instance.collection('recetas').snapshots();
   }
 
+  Stream<QuerySnapshot> mostrarRecetasPropias(String autor) {
+    return FirebaseFirestore.instance.collection('recetas').where('autor', isEqualTo: autor).snapshots();
+  }
+
   //Mostrar receta única
   Stream<DocumentSnapshot> mostrarReceta(String id) {
     return FirebaseFirestore.instance.collection('recetas').doc(id).snapshots();

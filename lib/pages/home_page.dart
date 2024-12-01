@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   //Variables para navbar
-  int pageSelected = 1;
+  int pageSelected = 0;
   List pages = [RecetasPropias(), RecetasGlobales()];
 
   @override
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.purple.shade300,
         foregroundColor: Colors.white,
-        title: Text("Gourmet Tagua Tagua"),
+        title: Text("Gourmet Tagua Tagua", style: TextStyle(fontFamily: 'coco', fontSize: 28)),
         actions: [
           IconButton(
             icon: Icon(Icons.logout),
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ],
-        leading: Icon(MdiIcons.bird),
+        leading: Icon(MdiIcons.bird, size: 36),
       ),
       body: pages[pageSelected],
       floatingActionButton: FloatingActionButton(

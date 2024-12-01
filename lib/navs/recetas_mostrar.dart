@@ -40,6 +40,10 @@ class RecetaMostrar extends StatelessWidget {
                     ),
                   ),
                   Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 240,
+                      // maxHeight: 120,
+                    ),
                     child: Column(
                       children: [
                         Column(

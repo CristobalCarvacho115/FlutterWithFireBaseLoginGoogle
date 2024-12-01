@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gourmet_tagua_tagua/navs/recetas_mostrar.dart';
 import 'package:gourmet_tagua_tagua/services/recetas_service.dart';
-import 'package:gourmet_tagua_tagua/widgets/recetas_gloables_widget.dart';
+import 'package:gourmet_tagua_tagua/widgets/recetas_widget.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class RecetasPropias extends StatefulWidget {
@@ -15,13 +15,15 @@ class RecetasPropias extends StatefulWidget {
 }
 
 class _RecetasPropiasState extends State<RecetasPropias> {
+  final String autor = FirebaseAuth.instance.currentUser!.displayName!;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Container(
         color: Colors.red.shade100,
         child: StreamBuilder(
-          stream: RecetasService().mostrarRecetasGlobales(),
+          stream: RecetasService().mostrarRecetasPropias(autor),
           // initialData: initialData,
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData || snapshot.connectionState == ConnectionState.waiting) {
@@ -31,53 +33,52 @@ class _RecetasPropiasState extends State<RecetasPropias> {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 var receta = snapshot.data!.docs[index];
-                if (receta['autor'] == FirebaseAuth.instance.currentUser!.displayName!) {
-                  return Slidable(
-                    //EDITAR
-                    endActionPane: ActionPane(
-                      motion: ScrollMotion(),
-                      children: [
-                        SlidableAction(
-                          onPressed: (context) {
-                            MaterialPageRoute route = MaterialPageRoute(
-                              builder: (context) => RecetaMostrar(
-                                receta: receta,
-                              ),
-                            );
-                            Navigator.push(context, route).then((value) {
-                              setState(() {});
-                            });
-                          },
-                          backgroundColor: Colors.blue,
-                          label: 'Ver Receta',
-                          icon: MdiIcons.eye,
-                        ),
-                      ],
-                    ),
-                    //BORRAR
-                    startActionPane: ActionPane(
-                      motion: ScrollMotion(),
-                      children: [
-                        SlidableAction(
-                          onPressed: (context) {
-                            _confirmBorrado(context).then((confirmaBorrado) {
-                              if (confirmaBorrado) {
-                                setState(() {
+                return Slidable(
+                  //EDITAR
+                  endActionPane: ActionPane(
+                    motion: ScrollMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          MaterialPageRoute route = MaterialPageRoute(
+                            builder: (context) => RecetaMostrar(
+                              receta: receta,
+                            ),
+                          );
+                          Navigator.push(context, route).then((value) {
+                            setState(() {});
+                          });
+                        },
+                        backgroundColor: Colors.blue,
+                        label: 'Ver Receta',
+                        icon: MdiIcons.eye,
+                      ),
+                    ],
+                  ),
+                  //BORRAR
+                  startActionPane: ActionPane(
+                    motion: ScrollMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          _confirmBorrado(context).then((confirmaBorrado) {
+                            if (confirmaBorrado) {
+                              setState(
+                                () {
                                   RecetasService().eliminarReceta(receta.id);
-                                });
-                              }
-                            });
-                          },
-                          backgroundColor: Colors.red,
-                          label: 'Borrar Tarjeta',
-                          icon: MdiIcons.trashCan,
-                        ),
-                      ],
-                    ),
-                    child: recetas_globales_widget(receta: receta),
-                  );
-                }
-                return null;
+                                },
+                              );
+                            }
+                          });
+                        },
+                        backgroundColor: Colors.red,
+                        label: 'Borrar Tarjeta',
+                        icon: MdiIcons.trashCan,
+                      ),
+                    ],
+                  ),
+                  child: recetas_widget(receta: receta),
+                );
               },
             );
           },
