@@ -11,11 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailCtrl = TextEditingController();
-  final TextEditingController passwordCtrl = TextEditingController();
-  String msgError = '';
-  bool ocultarContra = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
