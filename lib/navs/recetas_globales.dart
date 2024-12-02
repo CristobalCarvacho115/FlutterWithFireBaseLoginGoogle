@@ -68,7 +68,7 @@ class _RecetasGlobalesState extends State<RecetasGlobales> {
                             });
                           },
                           backgroundColor: Colors.red,
-                          label: 'Borrar Tarjeta',
+                          label: 'Borrar Receta',
                           icon: MdiIcons.trashCan,
                         ),
                       ],
