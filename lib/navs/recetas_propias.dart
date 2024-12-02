@@ -69,7 +69,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
                           });
                         },
                         backgroundColor: Colors.red,
-                        label: 'Borrar Tarjeta',
+                        label: 'Borrar Receta',
                         icon: MdiIcons.trashCan,
                       ),
                     ],
