@@ -48,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 40),
                   child: ElevatedButton(
                     onPressed: () {
+                      //Metodo para iniciar sesion con Google
                       AuthGoogleService().signIn().then(
                         (user) {
                           if (user != null) {

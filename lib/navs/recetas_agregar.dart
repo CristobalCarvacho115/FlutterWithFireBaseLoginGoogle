@@ -12,15 +12,16 @@ class RecetasAgregar extends StatefulWidget {
 }
 
 class _RecetasAgregarState extends State<RecetasAgregar> {
+  //Importante para formularios
   final formKey = GlobalKey<FormState>();
-
+  //Variables para los campos de texto
   TextEditingController nombreCtrl = TextEditingController();
   TextEditingController ingredientesCtrl = TextEditingController();
   TextEditingController preparacionCtrl = TextEditingController();
   String categoriaSeleccionada = 'Guisos';
   String imagen = 'guiso.jpg';
   final String autor = FirebaseAuth.instance.currentUser!.displayName!;
-
+  //Metodo para construir la vista
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +45,7 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
               ),
             ],
           ),
+          //Formulario
           child: Form(
             key: formKey,
             child: ListView(
@@ -110,6 +112,7 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                       child: Text('Categoria:', style: TextStyle(fontSize: 20)),
                     ),
+                    //Dropdown/ComboBox de categorias de la base de datos
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                       child: StreamBuilder<QuerySnapshot>(
@@ -118,7 +121,6 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                           if (!snapshot.hasData) {
                             return Center(child: CircularProgressIndicator());
                           }
-
                           List<DropdownMenuItem<String>> categoriasItems = snapshot.data!.docs.map((doc) {
                             Map<String, dynamic> categoria = doc.data() as Map<String, dynamic>;
                             return DropdownMenuItem<String>(
@@ -149,6 +151,7 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
                     ),
                   ],
                 ),
+                //Botón para agregar receta
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: ElevatedButton(
@@ -182,6 +185,7 @@ class _RecetasAgregarState extends State<RecetasAgregar> {
     );
   }
 
+  //Al agregar categoría agrega una foto según el nombre de la categoría que lo convierte esta funcion
   String _imagenSeleccionada(String categoria) {
     switch (categoria) {
       case 'Guisos':

@@ -1,3 +1,4 @@
+//Se agrega buildsript al este archivo
 buildscript {
     repositories {
         google()
@@ -5,6 +6,7 @@ buildscript {
     }
     dependencies {
         // id 'com.google.gms.google-services' version '4.4.2' apply false
+        // Se le hace cambios a la linea anterior para que quede de la siguiente manera
         classpath 'com.google.gms:google-services:4.4.2'
     }
 }

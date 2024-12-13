@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class RecetaMostrar extends StatelessWidget {
   const RecetaMostrar({super.key, required this.receta});
-
+  //Recibe la receta seleccionada
   final QueryDocumentSnapshot<Object?> receta;
 
   @override
@@ -25,6 +25,7 @@ class RecetaMostrar extends StatelessWidget {
               ),
               Row(
                 children: [
+                  //Imagen de la receta
                   Container(
                     alignment: Alignment.center,
                     margin: EdgeInsets.symmetric(horizontal: 10),
@@ -42,7 +43,6 @@ class RecetaMostrar extends StatelessWidget {
                   Container(
                     constraints: BoxConstraints(
                       maxWidth: 240,
-                      // maxHeight: 120,
                     ),
                     child: Column(
                       children: [
@@ -87,10 +87,12 @@ class RecetaMostrar extends StatelessWidget {
     );
   }
 
+  //Muestra los ingredientes de la receta con un guión y salto de linea
   String _mostrarIngredientes(String ingredientes) {
     return '- ' + ingredientes.trim().replaceAll(RegExp(r','), '\n-');
   }
 
+  //Muestra la preparación de la receta con un número y salto de linea
   String _mostrarPreparacion(String preparacion) {
     int numero = 1;
     bool continuar = true;

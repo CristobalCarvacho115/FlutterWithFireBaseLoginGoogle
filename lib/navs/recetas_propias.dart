@@ -22,6 +22,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
     return Container(
       child: Container(
         color: Colors.red.shade100,
+        //Recibir en tiempo real las recetas del usuario (autor)
         child: StreamBuilder(
           stream: RecetasService().mostrarRecetasPropias(autor),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -32,6 +33,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 var receta = snapshot.data!.docs[index];
+                //Botón para ver detalles de la receta (deslizar)
                 return Slidable(
                   endActionPane: ActionPane(
                     motion: ScrollMotion(),
@@ -53,6 +55,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
                       ),
                     ],
                   ),
+                  //Botón para borrar la receta si la confirmacion es true (deslizar)
                   startActionPane: ActionPane(
                     motion: ScrollMotion(),
                     children: [
@@ -84,6 +87,7 @@ class _RecetasPropiasState extends State<RecetasPropias> {
     );
   }
 
+  //Muestra un diálogo de confirmación para borrar la receta con true o false
   Future<dynamic> _confirmBorrado(BuildContext context) {
     return showDialog(
       barrierDismissible: false,

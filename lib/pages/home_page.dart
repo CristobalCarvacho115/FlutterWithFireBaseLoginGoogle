@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.purple.shade300,
         foregroundColor: Colors.white,
         title: Text("Gourmet Tagua Tagua", style: TextStyle(fontFamily: 'coco', fontSize: 28)),
+        //BOTON DE CIERRE DE SESION
         actions: [
           IconButton(
             icon: Icon(Icons.logout),
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
         ],
         leading: Icon(MdiIcons.bird, size: 36),
       ),
+      //Muestra los navbar
       body: pages[pageSelected],
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple.shade300,
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => RecetasAgregar()));
         },
       ),
-      //NAVIGATION
+      //Muestra la barra de navegacion
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.transparent,
         indicatorColor: Colors.purple.shade300,
@@ -69,6 +71,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         onDestinationSelected: (pages) {
+          //Actualiza la pagina seleccionada
           setState(() {
             pageSelected = pages;
           });
@@ -77,6 +80,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //Muestra un diálogo de confirmación para cerrar sesión con true o false
   Future<dynamic> _confirmarCierreSesion(BuildContext context) {
     return showDialog(
       barrierDismissible: false,
